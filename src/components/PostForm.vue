@@ -1,19 +1,9 @@
 <template>
   <form @submit.prevent>
     <h4>Создание поста</h4>
-    <input
-      v-model="post.title"
-      class="input"
-      type="text"
-      placeholder="Название:"
-    />
+    <my-input v-model="post.title" type="text" placeholder="Название:" />
 
-    <input
-      v-model="post.body"
-      class="input"
-      classype="text "
-      placeholder="Описание:"
-    />
+    <my-input v-model="post.body" classype="text " placeholder="Описание:" />
     <my-button class="btnss" @click="CreatePost">Создать</my-button>
   </form>
 </template>
@@ -34,13 +24,18 @@ export default {
     CreatePost() {
       this.post.id = Date.now();
       this.$emit("create", this.post);
-      this.post = {
-        title: " ",
-        body: " ", //очищение
-      };
-      // this.post.title= ""??
+      // this.post = {
+      //   title: " ",
+      //   body: " ", //очищение
+      // };
     },
   },
+  //  watch:{
+  //   handler(newVal){
+  //     console.log(newVal)
+  //   },
+  //   deep:true
+  // }
 };
 </script>
 
@@ -59,9 +54,9 @@ form {
 .app {
   padding: 20px;
 }
-.btnss{
+.btnss {
   display: flex;
   justify-content: flex-end;
-margin-top:15px ;
+  margin-top: 15px;
 }
 </style>
